@@ -60,9 +60,7 @@ $ go run main.go
 
 .svg
 
-![image](https://i.imgur.com/6FR4hKY.jpg)
-
-
+![image](https://i.imgur.com/xwqqqGI.jpg)
 
 2. debug/pprof/heap：`$HOST/api/v1/debug/pprof/heap?service_name=$NAME&service_port=$PORT`
 
