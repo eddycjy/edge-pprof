@@ -54,11 +54,11 @@ $ go run main.go
 }
 ```
 
-### .pb.gz
+.pb.gz
 
 可供下载到本地后利用 `go tool pprof` 进行更详细的性能分析
 
-### .svg
+.svg
 
 ![image](https://i.imgur.com/6FR4hKY.jpg)
 
