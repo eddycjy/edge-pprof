@@ -83,6 +83,7 @@ $ go run main.go
 
 ## TODO
 
+- Logging
 - JWT
 - AliyunOss 支持
 - PProf 定制化参数
