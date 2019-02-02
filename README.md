@@ -1,2 +1,2 @@
-# edge-pprof
+# Edge PProf
 edge-pprof
