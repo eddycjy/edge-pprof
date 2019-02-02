@@ -41,7 +41,7 @@ $ go run main.go
 
 ## 例子
 
-1. debug/pprof/profile：$HOST/api/v1/debug/pprof/profile?service_name=$NAME&service_port=$PORT
+1. debug/pprof/profile：`$HOST/api/v1/debug/pprof/profile?service_name=$NAME&service_port=$PORT`
 
 ```
 {
@@ -64,7 +64,7 @@ $ go run main.go
 
 
 
-2. debug/pprof/heap：$HOST/api/v1/debug/pprof/heap?service_name=$NAME&service_port=$PORT
+2. debug/pprof/heap：`$HOST/api/v1/debug/pprof/heap?service_name=$NAME&service_port=$PORT`
 
 ```
 {
@@ -77,6 +77,6 @@ $ go run main.go
 }
 ```
 
-3. debug/pprof/block: http://127.0.0.1:8080/api/v1/debug/pprof/block?service_name=$NAME&service_port=$PORT
+3. debug/pprof/block: `$HOST/api/v1/debug/pprof/block?service_name=$NAME&service_port=$PORT`
 
-4. debug/pprof/mutex: http://127.0.0.1:8080/api/v1/debug/pprof/mutex?service_name=$NAME&service_port=$PORT
+4. debug/pprof/mutex: `$HOST/api/v1/debug/pprof/mutex?service_name=$NAME&service_port=$PORT`
