@@ -7,6 +7,7 @@
 ## 环境要求
 
 - go >= 1.10
+- [go-bindata](https://github.com/go-bindata/go-bindata)
 - graphviz
 
 ## 配置
@@ -86,5 +87,4 @@ $ go run main.go
 - Logging
 - JWT
 - AliyunOss 支持
-- PProf 定制化参数
 - Makefile
