@@ -19,7 +19,7 @@ type Mutex struct {
 
 func NewMutex() *Mutex {
 	return &Mutex{PProf: &PProf{
-		Service:    &ServiceInfo{},
+		Service:    DefaultServiceInfo,
 		Collection: DefaultCollectionInfo,
 	}}
 }

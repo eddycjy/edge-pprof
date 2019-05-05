@@ -20,7 +20,7 @@ type Heap struct {
 
 func NewHeap() *Heap {
 	return &Heap{PProf: &PProf{
-		Service:    &ServiceInfo{},
+		Service:    DefaultServiceInfo,
 		Collection: DefaultCollectionInfo,
 	}}
 }

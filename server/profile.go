@@ -19,12 +19,13 @@ type Profile struct {
 
 func NewProfile() *Profile {
 	return &Profile{PProf: &PProf{
-		Service:    &ServiceInfo{},
+		Service:    DefaultServiceInfo,
 		Collection: DefaultCollectionInfo,
 	}}
 }
 
 func (p *Profile) GetURL() string {
+	log.Printf("url: %s", p.PProf.GetURL(setting.ProfileSetting.ProfileUrl))
 	return p.PProf.GetURL(setting.ProfileSetting.ProfileUrl)
 }
 

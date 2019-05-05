@@ -18,8 +18,9 @@ type PProf struct {
 }
 
 type ServiceInfo struct {
-	Name string `form:"service_name" binding:"required"`
-	Port int64  `form:"service_port" binding:"required"`
+	Name      string `form:"service_name" binding:"required"`
+	Port      int64  `form:"service_port" binding:"required"`
+	Namespace string `form:"namespace" `
 }
 
 type CollectionInfo struct {
@@ -33,6 +34,7 @@ type DebugPProf interface {
 }
 
 var (
+	DefaultServiceInfo    = &ServiceInfo{}
 	DefaultCollectionInfo = &CollectionInfo{}
 	DefaultProfileFile    savefile.PPfile
 	DefaultHeapFile       savefile.PPfile
@@ -41,6 +43,9 @@ var (
 )
 
 func NewPProf() {
+	DefaultServiceInfo = &ServiceInfo{
+		Namespace: "default",
+	}
 	DefaultCollectionInfo = &CollectionInfo{
 		Seconds: setting.ProfileSetting.DefaultSeconds,
 		Timeout: setting.ProfileSetting.DefaultTimeout,
@@ -64,15 +69,15 @@ func (p *PProf) GetURL(profilingUrl string) string {
 		p.Collection.Seconds = setting.ProfileSetting.MaxSeconds
 	}
 
-	url := fmt.Sprintf(
+	return fmt.Sprintf(
 		profilingUrl+setting.ProfileSetting.SuffixUrl,
 		setting.ProfileSetting.Protocol,
 		p.Service.Name,
+		p.Service.Namespace,
 		p.Service.Port,
 		p.Collection.Seconds,
 		p.Collection.Timeout,
 	)
-	return url
 }
 
 func (p *PProf) BindBasicData(c *gin.Context) error {

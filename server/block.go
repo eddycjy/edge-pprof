@@ -19,7 +19,7 @@ type Block struct {
 
 func NewBlock() *Block {
 	return &Block{PProf: &PProf{
-		Service:    &ServiceInfo{},
+		Service:    DefaultServiceInfo,
 		Collection: DefaultCollectionInfo,
 	}}
 }
