@@ -10,6 +10,7 @@ import (
 	"github.com/EDDYCJY/edge-pprof/pkg/profile"
 	"github.com/EDDYCJY/edge-pprof/pkg/profile/save"
 	"github.com/EDDYCJY/edge-pprof/pkg/setting"
+	"log"
 )
 
 type Heap struct {
@@ -41,6 +42,7 @@ func (h *Heap) Handle(c *gin.Context) {
 
 	err := h.PProf.BindBasicData(c)
 	if err != nil {
+		log.Printf("h.PProf.BindBasicData err: %v", err)
 		httpCode = http.StatusBadRequest
 		response.Set(e.INVALID_PARAMS)
 		return
@@ -52,6 +54,7 @@ func (h *Heap) Handle(c *gin.Context) {
 	}
 	saver, err := save.NewSave(setting.ProfileSetting.SaveMode, path)
 	if err != nil {
+		log.Printf("save.NewSave err: %v", err)
 		httpCode = http.StatusInternalServerError
 		response.Set(e.PROFILE_SAVE_MODE_UNKNOWN_ERROR)
 		return
@@ -59,6 +62,7 @@ func (h *Heap) Handle(c *gin.Context) {
 
 	statusCode, err := h.PProf.HanldePzPb(h, saver)
 	if err != nil {
+		log.Printf("h.PProf.HanldePzPb err: %v", err)
 		httpCode = http.StatusInternalServerError
 		response.Set(statusCode)
 		return
@@ -66,6 +70,7 @@ func (h *Heap) Handle(c *gin.Context) {
 
 	statusCode, err = h.PProf.HandleImage(saver, []string{"-" + profile.SVG, "-" + h.Type, path.PbGz.CompletePath})
 	if err != nil {
+		log.Printf("h.PProf.HandleImage err: %v", err)
 		httpCode = http.StatusInternalServerError
 		response.Set(statusCode)
 		return
