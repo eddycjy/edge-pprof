@@ -25,7 +25,6 @@ func NewProfile() *Profile {
 }
 
 func (p *Profile) GetURL() string {
-	log.Printf("url: %s", p.PProf.GetURL(setting.ProfileSetting.ProfileUrl))
 	return p.PProf.GetURL(setting.ProfileSetting.ProfileUrl)
 }
 
