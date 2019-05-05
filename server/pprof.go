@@ -20,7 +20,7 @@ type PProf struct {
 type ServiceInfo struct {
 	Name      string `form:"service_name" binding:"required"`
 	Port      int64  `form:"service_port" binding:"required"`
-	Namespace string `form:"namespace" `
+	Namespace string `form:"namespace"`
 }
 
 type CollectionInfo struct {
@@ -68,9 +68,19 @@ func (p *PProf) GetURL(profilingUrl string) string {
 	if p.Collection.Seconds > setting.ProfileSetting.MaxSeconds {
 		p.Collection.Seconds = setting.ProfileSetting.MaxSeconds
 	}
+	if p.Service.Namespace == "" {
+		return fmt.Sprintf(
+			setting.ProfileSetting.Host2+profilingUrl+setting.ProfileSetting.SuffixUrl,
+			setting.ProfileSetting.Protocol,
+			p.Service.Name,
+			p.Service.Port,
+			p.Collection.Seconds,
+			p.Collection.Timeout,
+		)
+	}
 
 	return fmt.Sprintf(
-		profilingUrl+setting.ProfileSetting.SuffixUrl,
+		setting.ProfileSetting.Host1+profilingUrl+setting.ProfileSetting.SuffixUrl,
 		setting.ProfileSetting.Protocol,
 		p.Service.Name,
 		p.Service.Namespace,

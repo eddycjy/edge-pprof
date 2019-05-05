@@ -22,6 +22,8 @@ type Server struct {
 type Profile struct {
 	SaveMode       int32
 	Protocol       string
+	Host1          string
+	Host2          string
 	ProfileUrl     string
 	HeapUrl        string
 	BlockUrl       string
