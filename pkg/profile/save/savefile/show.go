@@ -16,9 +16,21 @@ func NewShow(path *profile.CompletePath) *Show {
 }
 
 func (c *Show) PzPb() string {
-	return setting.ProfileFileStaticSetting.FSProtocol + "://" + setting.ProfileFileStaticSetting.FSDomain + ":" + setting.ServerSetting.HttpPort + "/" + setting.ProfileFileStaticSetting.FSRelativePath + "/" + c.Path.PbGz.SavePath + "/" + c.Path.PbGz.FileName
+	host := setting.ProfileFileStaticSetting.FSProtocol + "://" + setting.ProfileFileStaticSetting.FSDomain
+	path := "/" + setting.ProfileFileStaticSetting.FSRelativePath + "/" + c.Path.PbGz.SavePath + "/" + c.Path.PbGz.FileName
+	if setting.ProfileFileStaticSetting.FSPort == "" {
+		return host + path
+	}
+
+	return host + ":" + setting.ProfileFileStaticSetting.FSPort + path
 }
 
 func (c *Show) Image() string {
-	return setting.ProfileFileStaticSetting.FSProtocol + "://" + setting.ProfileFileStaticSetting.FSDomain + ":" + setting.ServerSetting.HttpPort + "/" + setting.ProfileFileStaticSetting.FSRelativePath + "/" + c.Path.Image.SavePath + "/" + c.Path.Image.FileName
+	host := setting.ProfileFileStaticSetting.FSProtocol + "://" + setting.ProfileFileStaticSetting.FSDomain
+	path := "/" + setting.ProfileFileStaticSetting.FSRelativePath + "/" + c.Path.Image.SavePath + "/" + c.Path.Image.FileName
+	if setting.ProfileFileStaticSetting.FSPort == "" {
+		return host + path
+	}
+
+	return host + ":" + setting.ProfileFileStaticSetting.FSPort + path
 }

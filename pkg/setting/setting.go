@@ -44,6 +44,7 @@ type ProfileFile struct {
 type ProfileFileStatic struct {
 	FSProtocol     string
 	FSDomain       string
+	FSPort         string
 	FSRelativePath string
 }
 
