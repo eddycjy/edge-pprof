@@ -13,22 +13,22 @@ import (
 	"github.com/EDDYCJY/edge-pprof/pkg/setting"
 )
 
-type Block struct {
+type Goroutine struct {
 	PProf *PProf
 }
 
-func NewBlock() *Block {
-	return &Block{PProf: &PProf{
+func NewGoroutine() *Goroutine {
+	return &Goroutine{PProf: &PProf{
 		Service:    DefaultServiceInfo,
 		Collection: DefaultCollectionInfo,
 	}}
 }
 
-func (p *Block) GetURL() string {
-	return p.PProf.GetURL(setting.ProfileSetting.BlockUrl)
+func (h *Goroutine) GetURL() string {
+	return h.PProf.GetURL(setting.ProfileSetting.GoroutineUrl)
 }
 
-func (h *Block) Handle(c *gin.Context) {
+func (h *Goroutine) Handle(c *gin.Context) {
 	var (
 		httpCode = http.StatusOK
 		response = app.NewResponse()
@@ -46,8 +46,8 @@ func (h *Block) Handle(c *gin.Context) {
 	}
 
 	path := &profile.CompletePath{
-		PbGz:  h.PProf.GetPbGzCompletePath(DefaultBlockFile, profile.PBGZ),
-		Image: h.PProf.GetImageCompletePath(DefaultBlockFile, profile.SVG),
+		PbGz:  h.PProf.GetPbGzCompletePath(DefaultGoroutineFile, profile.PBGZ),
+		Image: h.PProf.GetImageCompletePath(DefaultGoroutineFile, profile.SVG),
 	}
 	saver, err := save.NewSave(setting.ProfileSetting.SaveMode, path)
 	if err != nil {

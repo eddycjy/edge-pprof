@@ -28,6 +28,7 @@ type Profile struct {
 	HeapUrl        string
 	BlockUrl       string
 	MutexUrl       string
+	GoroutineUrl   string
 	SuffixUrl      string
 	DefaultSeconds int32
 	DefaultTimeout int32
@@ -49,11 +50,12 @@ type ProfileFileStatic struct {
 }
 
 type ProfileRoute struct {
-	RootSavePath    string
-	ProfileSavePath string
-	HeapSavePath    string
-	BlockSavePath   string
-	MutexSavePath   string
+	RootSavePath      string
+	ProfileSavePath   string
+	HeapSavePath      string
+	BlockSavePath     string
+	MutexSavePath     string
+	GoroutineSavePath string
 }
 
 var (

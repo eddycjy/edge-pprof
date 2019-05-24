@@ -25,5 +25,6 @@ func InitRouter() *gin.Engine {
 	apiv1.GET("debug/pprof/heap", server.NewHeap().Handle)
 	apiv1.GET("debug/pprof/block", server.NewBlock().Handle)
 	apiv1.GET("debug/pprof/mutex", server.NewMutex().Handle)
+	apiv1.GET("debug/pprof/goroutine", server.NewGoroutine().Handle)
 	return r
 }

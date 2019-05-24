@@ -40,6 +40,7 @@ var (
 	DefaultHeapFile       savefile.PPfile
 	DefaultBlockFile      savefile.PPfile
 	DefaultMutexFile      savefile.PPfile
+	DefaultGoroutineFile  savefile.PPfile
 )
 
 func NewPProf() {
@@ -54,6 +55,7 @@ func NewPProf() {
 	DefaultHeapFile = savefile.NewHeapFile()
 	DefaultBlockFile = savefile.NewBlockFile()
 	DefaultMutexFile = savefile.NewMutexFile()
+	DefaultGoroutineFile = savefile.NewGoroutineFile()
 }
 
 func (p *PProf) GetPbGzCompletePath(ppf savefile.PPfile, ext string) *profile.Path {
