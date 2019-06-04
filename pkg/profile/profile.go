@@ -7,6 +7,7 @@ const (
 	DOT  = "."
 	PBGZ = "pb.gz"
 	SVG  = "svg"
+	TXT  = "txt"
 
 	SAVE_FILE_MODE = 1
 )

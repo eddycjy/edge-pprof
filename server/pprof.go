@@ -106,8 +106,8 @@ func (p *PProf) BindBasicData(c *gin.Context) error {
 	return nil
 }
 
-func (p *PProf) HanldePzPb(d DebugPProf, saver save.Save) (int, error) {
-	pzpbResp, err := save.GetOriginPzPb(d.GetURL())
+func (p *PProf) HanldePzPb(url string, saver save.Save) (int, error) {
+	pzpbResp, err := save.GetOriginPzPb(url)
 	if err != nil {
 		return e.PROFILE_CREATE_PBGZ_ERROR, err
 	}

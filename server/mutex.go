@@ -57,7 +57,7 @@ func (h *Mutex) Handle(c *gin.Context) {
 		return
 	}
 
-	statusCode, err := h.PProf.HanldePzPb(h, saver)
+	statusCode, err := h.PProf.HanldePzPb(h.GetURL(), saver)
 	if err != nil {
 		log.Printf("h.PProf.HanldePzPb err: %v", err)
 		httpCode = http.StatusInternalServerError

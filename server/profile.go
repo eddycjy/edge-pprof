@@ -57,7 +57,7 @@ func (p *Profile) Handle(c *gin.Context) {
 		return
 	}
 
-	statusCode, err := p.PProf.HanldePzPb(p, saver)
+	statusCode, err := p.PProf.HanldePzPb(p.GetURL(), saver)
 	if err != nil {
 		log.Printf("p.PProf.HanldePzPb err: %v", err)
 		httpCode = http.StatusInternalServerError

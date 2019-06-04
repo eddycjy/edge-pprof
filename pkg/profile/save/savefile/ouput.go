@@ -5,6 +5,7 @@ import (
 
 	"github.com/EDDYCJY/edge-pprof/pkg/file"
 	"github.com/EDDYCJY/edge-pprof/pkg/profile"
+	"io/ioutil"
 )
 
 type FileOutput struct {
@@ -24,6 +25,15 @@ func (f *FileOutput) GetPzPb(body io.ReadCloser) error {
 	}
 	defer fd.Close()
 	io.Copy(fd, body)
+
+	data, err := ioutil.ReadAll(body)
+	if err != nil {
+		return err
+	}
+	err = ioutil.WriteFile(f.Path.PbGz.SaveCompletePath+".html", data, 0755)
+	if err != nil {
+		return err
+	}
 
 	return nil
 }

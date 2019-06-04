@@ -16,6 +16,10 @@ func NewShow(path *profile.CompletePath) *Show {
 }
 
 func (c *Show) PzPb() string {
+	if c.Path.PbGz.SavePath == "" {
+		return ""
+	}
+
 	host := setting.ProfileFileStaticSetting.FSProtocol + "://" + setting.ProfileFileStaticSetting.FSDomain
 	path := "/" + setting.ProfileFileStaticSetting.FSRelativePath + "/" + c.Path.PbGz.SavePath + "/" + c.Path.PbGz.FileName
 	if setting.ProfileFileStaticSetting.FSPort == "" {
@@ -26,6 +30,10 @@ func (c *Show) PzPb() string {
 }
 
 func (c *Show) Image() string {
+	if c.Path.Image.SavePath == "" {
+		return ""
+	}
+
 	host := setting.ProfileFileStaticSetting.FSProtocol + "://" + setting.ProfileFileStaticSetting.FSDomain
 	path := "/" + setting.ProfileFileStaticSetting.FSRelativePath + "/" + c.Path.Image.SavePath + "/" + c.Path.Image.FileName
 	if setting.ProfileFileStaticSetting.FSPort == "" {
